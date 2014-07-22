@@ -32,6 +32,8 @@ function reset() {
 $(document).ready(function() {
 	reset();
 	setInterval(function() {
+		$('body').css('background', 'linear-gradient(to right, rgb(' + r1 + ', ' + g1 + ', ' + b1 + '), rgb(' + r2 + ', ' + g2 + ', ' + b2 + '))');
+
 		count++;
 
 		if (count == 100) {
@@ -44,8 +46,5 @@ $(document).ready(function() {
 		r3 += rStep2;
 		g3 += gStep2;
 		b3 += bStep2;
-
-		$('body').css('background', 'linear-gradient(to right, rgb(' + r1 + ', ' + g1 + ', ' + b1 + '), rgb(' + r2 + ', ' + g2 + ', ' + b2 + '))');
-
 	}, 100);
 });
