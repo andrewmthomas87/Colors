@@ -48,5 +48,5 @@ function animate() {
 
 $(document).ready(function() {
 	reset();
-	setInterval(animate, 2);
+	setInterval(animate, 5);
 });
