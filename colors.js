@@ -50,5 +50,5 @@ function animate() {
 
 $(document).ready(function() {
 	reset();
-	setInterval(animate, 1000);
+	setInterval(animate, 10);
 });
