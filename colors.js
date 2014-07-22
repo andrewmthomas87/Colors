@@ -46,5 +46,6 @@ $(document).ready(function() {
 		b3 += bStep2;
 
 		$('body').css('background', 'linear-gradient(to right, rgb(' + r1 + ', ' + g1 + ', ' + b1 + '), rgb(' + r2 + ', ' + g2 + ', ' + b2 + '))');
-	}, 10);
+
+	}, 100);
 });
