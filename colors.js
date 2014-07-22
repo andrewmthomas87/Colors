@@ -30,7 +30,7 @@ function reset() {
 }
 
 function animate() {
-	$('body').css('background', 'linear-gradient(to right, rgb(' + Math.floor(r1) + ', ' + Math.floor(g1) + ', ' + Math.floor(b1) + '), rgb(' + Math.floor(r2) + ', ' + Math.floor(g2) + ', ' + Math.floor(b2) + '))');
+	$('body').css('background', 'linear-gradient(to right, rgb(' + Math.floor(r1) + ', ' + Math.floor(g1) + ', ' + Math.floor(b1) + '), rgb(' + Math.floor(r3) + ', ' + Math.floor(g3) + ', ' + Math.floor(b3) + '))');
 
 	count++;
 
@@ -44,8 +44,6 @@ function animate() {
 	r3 += rStep2;
 	g3 += gStep2;
 	b3 += bStep2;
-
-	console.log('linear-gradient(to right, rgb(' + Math.floor(r1) + ', ' + Math.floor(g1) + ', ' + Math.floor(b1) + '), rgb(' + Math.floor(r2) + ', ' + Math.floor(g2) + ', ' + Math.floor(b2) + '))');
 }
 
 $(document).ready(function() {
