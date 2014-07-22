@@ -29,22 +29,26 @@ function reset() {
 	count = 0;
 }
 
+function animate() {
+	$('body').css('background', 'linear-gradient(to right, rgb(' + Math.floor(r1) + ', ' + Math.floor(g1) + ', ' + Math.floor(b1) + '), rgb(' + Math.floor(r2) + ', ' + Math.floor(g2) + ', ' + Math.floor(b2) + '))');
+
+	count++;
+
+	if (count == 100) {
+		reset();
+	}
+
+	r1 += rStep1;
+	g1 += gStep1;
+	b1 += bStep1;
+	r3 += rStep2;
+	g3 += gStep2;
+	b3 += bStep2;
+
+	console.log('linear-gradient(to right, rgb(' + Math.floor(r1) + ', ' + Math.floor(g1) + ', ' + Math.floor(b1) + '), rgb(' + Math.floor(r2) + ', ' + Math.floor(g2) + ', ' + Math.floor(b2) + '))');
+}
+
 $(document).ready(function() {
 	reset();
-	setInterval(function() {
-		$('body').css('background', 'linear-gradient(to right, rgb(' + Math.floor(r1) + ', ' + Math.floor(g1) + ', ' + Math.floor(b1) + '), rgb(' + Math.floor(r2) + ', ' + Math.floor(g2) + ', ' + Math.floor(b2) + '))');
-
-		count++;
-
-		if (count == 100) {
-			reset();
-		}
-
-		r1 += rStep1;
-		g1 += gStep1;
-		b1 += bStep1;
-		r3 += rStep2;
-		g3 += gStep2;
-		b3 += bStep2;
-	}, 1000);
+	setInterval(animate, 1000);
 });
