@@ -5,6 +5,10 @@ var interval;
 
 var freeze = false;
 
+function resize() {
+	$('span').css('left', ($(window).width() - $('span').width()) / 2);
+}
+
 function reset() {
 	r1 = r2;
 	g1 = g2;
@@ -51,9 +55,12 @@ function animate() {
 }
 
 $(document).ready(function() {
+	resize();
 	reset();
 	interval = setInterval(animate, 10);
 });
+
+$(window).resize(resize);
 
 $('body').click(function() {
 	freeze = !freeze;
