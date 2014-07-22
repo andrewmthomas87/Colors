@@ -1,6 +1,10 @@
 
 var r1, g1, b1, r2 = Math.floor(Math.random() * 256), g2 = Math.floor(Math.random() * 256), b2 = Math.floor(Math.random() * 256), rStep1, gStep1, bStep1, r3, g3, b3, r4 = Math.floor(Math.random() * 256), g4 = Math.floor(Math.random() * 256), b4 = Math.floor(Math.random() * 256), rStep2, gStep2, bStep2, count;
 
+var interval;
+
+var freeze = false;
+
 function reset() {
 	r1 = r2;
 	g1 = g2;
@@ -48,5 +52,15 @@ function animate() {
 
 $(document).ready(function() {
 	reset();
-	setInterval(animate, 10);
+	interval = setInterval(animate, 10);
+});
+
+$('body').click(function() {
+	freeze = !freeze;
+	if (freeze) {
+		clearInterval(interval);
+	}
+	else {
+		interval = setInterval(animate, 10);
+	}
 });
