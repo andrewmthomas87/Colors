@@ -46,5 +46,5 @@ $(document).ready(function() {
 		r3 += rStep2;
 		g3 += gStep2;
 		b3 += bStep2;
-	}, 100);
+	}, 1000);
 });
