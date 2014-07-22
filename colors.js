@@ -32,7 +32,7 @@ function reset() {
 $(document).ready(function() {
 	reset();
 	setInterval(function() {
-		$('body').css('background', 'linear-gradient(to right, rgb(' + r1 + ', ' + g1 + ', ' + b1 + '), rgb(' + r2 + ', ' + g2 + ', ' + b2 + '))');
+		$('body').css('background', 'linear-gradient(to right, rgb(' + Math.floor(r1) + ', ' + Math.floor(g1) + ', ' + Math.floor(b1) + '), rgb(' + Math.floor(r2) + ', ' + Math.floor(g2) + ', ' + Math.floor(b2) + '))');
 
 		count++;
 
