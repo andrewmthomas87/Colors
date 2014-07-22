@@ -59,8 +59,11 @@ $('body').click(function() {
 	freeze = !freeze;
 	if (freeze) {
 		clearInterval(interval);
+		$('span').show();
+		$('span').fadeOut(2000);
 	}
 	else {
 		interval = setInterval(animate, 10);
+		$('span').hide();
 	}
 });

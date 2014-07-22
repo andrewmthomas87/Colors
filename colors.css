@@ -8,3 +8,20 @@ html, body {
 body {
 	background: linear-gradient(to right, #fff, #000);
 }
+
+h1 {
+	text-align: center;
+}
+
+span {
+	display: none;
+	position: fixed;
+	top: 2em;
+	color: #fff;
+	padding: 0.5em 1em;
+	margin: 0;
+	background-color: rgba(0, 0, 0, 0.75);
+	font-family: 'Verdana', sans-serif;
+	font-size: 1.75em;
+	font-weight: 400;
+}
