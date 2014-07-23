@@ -71,7 +71,7 @@ $(document).ready(function() {
 	resize();
 	reset1();
 	reset2();
-	interval = setInterval(animate, 5);
+	interval = setInterval(animate, 10);
 });
 
 $(window).resize(resize);
@@ -84,7 +84,7 @@ $('body').click(function() {
 		$('span').fadeOut(2000);
 	}
 	else {
-		interval = setInterval(animate, 5);
+		interval = setInterval(animate, 10);
 		$('span').hide();
 	}
 });
