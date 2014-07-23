@@ -41,10 +41,10 @@ function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
 	var averageFrequency = 0;
-	for (i = 0; i < 50; i++) {
+	for (i = 0; i < 100; i++) {
 		averageFrequency += fbc_array[i];
 	}
-	averageFrequency /= 50;
+	averageFrequency /= 100;
 	$('div').height(averageFrequency);
 	if (targetR1 > currentR1) {
 		currentR1++;
