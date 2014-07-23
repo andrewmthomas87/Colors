@@ -36,8 +36,8 @@ function animate() {
 		averageFrequency += fbc_array[i];
 	}
 	averageFrequency /= 20000;
-	if (averageFrequency < 2) {
-		console.log('Less than 2');
+	if (averageFrequency < 1) {
+		console.log('Less than 1');
 		return;
 	}
 	averageFrequency = Math.pow(averageFrequency, 1.5);
