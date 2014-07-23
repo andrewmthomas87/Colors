@@ -37,6 +37,7 @@ function animate() {
 	}
 	averageFrequency /= 20000;
 	if (averageFrequency < 2) {
+		console.log('Less than 2');
 		return;
 	}
 	averageFrequency = Math.pow(averageFrequency, 1.5);
