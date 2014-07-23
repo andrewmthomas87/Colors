@@ -5,6 +5,8 @@ var interval;
 
 var freeze = false;
 
+var audio, audioSrc, ctx, analyser, frequencyData;
+
 function resize() {
 	$('span').css('left', ($(window).width() - $('span').width()) / 2);
 }
@@ -64,6 +66,8 @@ function animate() {
 	else {
 		reset2();
 	}
+	analyser.getByteFrequencyData(frequencyData);
+	console.log(frequencyData);
 	$('body').css('background', 'linear-gradient(to right, rgb(' + currentR1 + ', ' + currentG1 + ', ' + currentB1 + '), rgb(' + currentR2 + ', ' + currentG2 + ', ' + currentB2 + '))');
 }
 
@@ -72,6 +76,13 @@ $(document).ready(function() {
 	reset1();
 	reset2();
 	interval = setInterval(animate, 10);
+	ctx = new AudioContext();
+	audio = document.getElementById('audio');
+	audioSrc = ctx.createMediaElementSource(audio);
+	analyser = ctx.createAnalyser();
+	audioSrc.connect(analyser);
+	frequencyData = new Uint8Array(analyser.frequencyBinCount);
+	audio.start();
 });
 
 $(window).resize(resize);
