@@ -77,7 +77,7 @@ function animate() {
 		currentB2 -= averageFrequency;
 	}
 	else {
-		reset2());
+		reset2();
 	}
 	$('body').css('background', 'linear-gradient(to right, rgb(' + currentR1 + ', ' + currentG1 + ', ' + currentB1 + '), rgb(' + currentR2 + ', ' + currentG2 + ', ' + currentB2 + '))');
 }
