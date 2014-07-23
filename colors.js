@@ -1,4 +1,20 @@
 
+var audio, context, analyser, source;
+
+$(document).ready(function() {
+	audio = new Audio();
+	audio.src = 'Some-Nights.mp3';
+	audio.controls = false;
+	audio.loop = true;
+	audio.autoplay = true;
+	document.body.appendChild(audio);
+	context = new webkitAudioContext();
+	analyser = context.createAnalyser();
+	source = context.createMediaElementSource(audio);
+	source.connect(analyser);
+	analyser.connect(context.destination);
+});
+
 var currentR1 = 255, currentG1 = 255, currentB1 = 255, targetR1, targetG1, targetB1, currentR2 = 0, currentG2 = 0, currentB2 = 0, targetR2, targetG2, targetB2;
 
 var interval;
@@ -72,30 +88,6 @@ $(document).ready(function() {
 	reset1();
 	reset2();
 	interval = setInterval(animate, 10);
-window.onload = function() {
-  var ctx = new AudioContext();
-  var audio = document.getElementById('myAudio');
-  var audioSrc = ctx.createMediaElementSource(audio);
-  var analyser = ctx.createAnalyser();
-  // we have to connect the MediaElementSource with the analyser
-  audioSrc.connect(analyser);
-  // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
- 
-  // frequencyBinCount tells you how many values you'll receive from the analyser
-  var frequencyData = new Uint8Array(analyser.frequencyBinCount);
- 
-  // we're ready to receive some data!
-  // loop
-  function renderFrame() {
-     requestAnimationFrame(renderFrame);
-     // update data in frequencyData
-     analyser.getByteFrequencyData(frequencyData);
-     // render frame based on values in frequencyData
-     // console.log(frequencyData)
-  }
-  audio.start();
-  renderFrame();
-};
 });
 
 $(window).resize(resize);
