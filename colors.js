@@ -45,7 +45,7 @@ function animate() {
 		averageFrequency += fbc_array[i];
 	}
 	averageFrequency /= 50;
-	console.log(averageFrequency);
+	$('div').height(averageFrequency);
 	if (targetR1 > currentR1) {
 		currentR1++;
 	}
