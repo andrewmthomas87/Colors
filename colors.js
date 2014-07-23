@@ -29,7 +29,6 @@ function reset2() {
 }
 
 function animate() {
-	$('body').css('background', 'linear-gradient(to right, rgb(' + currentR1 + ', ' + currentG1 + ', ' + currentB1 + '), rgb(' + currentR2 + ', ' + currentG2 + ', ' + currentB2 + '))');
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
 	var averageFrequency = 0;
@@ -38,27 +37,21 @@ function animate() {
 	}
 	averageFrequency /= 20000;
 	if (targetR1 >= currentR1 + averageFrequency) {
-		console.log('Red');
 		currentR1 += averageFrequency;
 	}
 	else if (targetR1 <= currentR1 - averageFrequency) {
-		console.log('Red');
 		currentR1 -= averageFrequency;
 	}
 	else if (targetG1 >= currentG1 + averageFrequency) {
-		console.log('Green');
 		currentG1 += averageFrequency;
 	}
 	else if (targetG1 <= currentG1 - averageFrequency) {
-		console.log('Green');
 		currentG1 -= averageFrequency;
 	}
 	else if (targetB1 >= currentB1 + averageFrequency) {
-		console.log('Blue');
 		currentB1 += averageFrequency;
 	}
 	else if (targetB1 <= currentB1 - averageFrequency) {
-		console.log('Blue');
 		currentB1 -= averageFrequency;
 	}
 	else {
@@ -85,6 +78,7 @@ function animate() {
 	else {
 		reset2();
 	}
+	$('body').css('background', 'linear-gradient(to right, rgb(' + Math.floor(currentR1) + ', ' + Math.floor(currentG1) + ', ' + Math.floor(currentB1) + '), rgb(' + Math.floor(currentR2) + ', ' + Math.floor(currentG2) + ', ' + Math.floor(currentB2) + '))');
 }
 
 $(document).ready(function() {
@@ -97,7 +91,7 @@ $(document).ready(function() {
 	resize();
 	reset1();
 	reset2();
-	interval = setInterval(animate, 500);
+	interval = setInterval(animate, 10);
 });
 
 $(window).resize(resize);
@@ -112,7 +106,7 @@ $('body').click(function() {
 	}
 	else {
 		audio.play();
-		interval = setInterval(animate, 500);
+		interval = setInterval(animate, 10);
 		$('span').hide();
 	}
 });
