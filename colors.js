@@ -36,7 +36,7 @@ function animate() {
 		averageFrequency += fbc_array[i];
 	}
 	averageFrequency /= 10000;
-	if (averageFrequency < 1.75) {
+	if (averageFrequency < 2) {
 		averageFrequency = 0.25;
 	}
 	averageFrequency = Math.pow(averageFrequency, 1.5);
