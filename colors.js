@@ -97,7 +97,7 @@ $(document).ready(function() {
 	resize();
 	reset1();
 	reset2();
-	interval = setInterval(animate, 10);
+	interval = setInterval(animate, 500);
 });
 
 $(window).resize(resize);
@@ -112,7 +112,7 @@ $('body').click(function() {
 	}
 	else {
 		audio.play();
-		interval = setInterval(animate, 10);
+		interval = setInterval(animate, 500);
 		$('span').hide();
 	}
 });
