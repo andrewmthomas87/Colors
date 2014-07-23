@@ -5,8 +5,6 @@ var interval;
 
 var freeze = false;
 
-var audio, audioSrc, ctx, analyser, frequencyData;
-
 function resize() {
 	$('span').css('left', ($(window).width() - $('span').width()) / 2);
 }
@@ -66,8 +64,6 @@ function animate() {
 	else {
 		reset2();
 	}
-	analyser.getByteFrequencyData(frequencyData);
-	console.log(frequencyData);
 	$('body').css('background', 'linear-gradient(to right, rgb(' + currentR1 + ', ' + currentG1 + ', ' + currentB1 + '), rgb(' + currentR2 + ', ' + currentG2 + ', ' + currentB2 + '))');
 }
 
@@ -76,13 +72,30 @@ $(document).ready(function() {
 	reset1();
 	reset2();
 	interval = setInterval(animate, 10);
-	ctx = new AudioContext();
-	audio = document.getElementById('audio');
-	audioSrc = ctx.createMediaElementSource(audio);
-	analyser = ctx.createAnalyser();
-	audioSrc.connect(analyser);
-	frequencyData = new Uint8Array(analyser.frequencyBinCount);
-	audio.start();
+window.onload = function() {
+  var ctx = new AudioContext();
+  var audio = document.getElementById('myAudio');
+  var audioSrc = ctx.createMediaElementSource(audio);
+  var analyser = ctx.createAnalyser();
+  // we have to connect the MediaElementSource with the analyser
+  audioSrc.connect(analyser);
+  // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
+ 
+  // frequencyBinCount tells you how many values you'll receive from the analyser
+  var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+ 
+  // we're ready to receive some data!
+  // loop
+  function renderFrame() {
+     requestAnimationFrame(renderFrame);
+     // update data in frequencyData
+     analyser.getByteFrequencyData(frequencyData);
+     // render frame based on values in frequencyData
+     // console.log(frequencyData)
+  }
+  audio.start();
+  renderFrame();
+};
 });
 
 $(window).resize(resize);
