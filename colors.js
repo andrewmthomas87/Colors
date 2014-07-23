@@ -1,12 +1,12 @@
 
 var audio, context, analyser, source;
+audio = new Audio();
+audio.src = 'Some-Nights.mp3';
+audio.controls = false;
+audio.loop = true;
+audio.autoplay = true;
 
 $(document).ready(function() {
-	audio = new Audio();
-	audio.src = 'Some-Nights.mp3';
-	audio.controls = false;
-	audio.loop = true;
-	audio.autoplay = true;
 	document.body.appendChild(audio);
 	context = new webkitAudioContext();
 	analyser = context.createAnalyser();
