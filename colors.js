@@ -98,11 +98,13 @@ $(window).resize(resize);
 $('body').click(function() {
 	freeze = !freeze;
 	if (freeze) {
+		audio.pause();
 		clearInterval(interval);
 		$('span').show();
 		$('span').fadeOut(2000);
 	}
 	else {
+		audio.play();
 		interval = setInterval(animate, 10);
 		$('span').hide();
 	}
