@@ -37,7 +37,7 @@ function animate() {
 	}
 	averageFrequency /= 10000;
 	if (averageFrequency < 1.75) {
-		averageFrequency = 0.75;
+		averageFrequency = 0.25;
 	}
 	averageFrequency = Math.pow(averageFrequency, 1.5);
 	if (targetR1 >= currentR1 + averageFrequency) {
