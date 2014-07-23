@@ -32,7 +32,7 @@ function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
 	averageFrequency =  fbc_array[0] / 100;
-	if (averageFrequency < 1.75) {
+	if (averageFrequency < 1.5) {
 		console.log('Less than 1.75');
 		return;
 	}
