@@ -6,15 +6,6 @@ audio.controls = false;
 audio.loop = true;
 audio.autoplay = true;
 
-$(document).ready(function() {
-	document.body.appendChild(audio);
-	context = new webkitAudioContext();
-	analyser = context.createAnalyser();
-	source = context.createMediaElementSource(audio);
-	source.connect(analyser);
-	analyser.connect(context.destination);
-});
-
 var currentR1 = 255, currentG1 = 255, currentB1 = 255, targetR1, targetG1, targetB1, currentR2 = 0, currentG2 = 0, currentB2 = 0, targetR2, targetG2, targetB2;
 
 var interval;
@@ -23,6 +14,10 @@ var freeze = false;
 
 function resize() {
 	$('span').css('left', ($(window).width() - $('span').width()) / 2);
+	$('div').css('width', $(window).width() / 100);
+	for (i = 0; i < 100; i++) {
+		$('body div:nth-child(' + (i + 1) + ')').css('left', $(window).width() / 100 * i);
+	}
 }
 
 function reset1() {
@@ -40,12 +35,9 @@ function reset2() {
 function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
-	var averageFrequency = 0;
 	for (i = 0; i < 100; i++) {
-		averageFrequency += fbc_array[i];
+		$('body div:nth-child(' + (i + 1) + ')').height(fbc_array[i]);
 	}
-	averageFrequency /= 100;
-	$('div').height(averageFrequency);
 	if (targetR1 > currentR1) {
 		currentR1++;
 	}
@@ -92,6 +84,15 @@ function animate() {
 }
 
 $(document).ready(function() {
+	for (i = 0; i < 100; i++) {
+		$('span').append('<div></div>');
+	}
+	document.body.appendChild(audio);
+	context = new webkitAudioContext();
+	analyser = context.createAnalyser();
+	source = context.createMediaElementSource(audio);
+	source.connect(analyser);
+	analyser.connect(context.destination);
 	resize();
 	reset1();
 	reset2();
