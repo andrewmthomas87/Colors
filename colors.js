@@ -85,7 +85,7 @@ function animate() {
 
 $(document).ready(function() {
 	for (i = 0; i < 100; i++) {
-		$('span').append('<div></div>');
+		$('body').append('<div></div>');
 	}
 	document.body.appendChild(audio);
 	context = new webkitAudioContext();
