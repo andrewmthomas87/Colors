@@ -81,7 +81,7 @@ function animate() {
 	else {
 		reset2();
 	}
-	$('body').css('background', 'radial-gradient(rgb(' + Math.floor(currentR1) + ', ' + Math.floor(currentG1) + ', ' + Math.floor(currentB1) + ') ' + (fbc_array[10] / $(window).height() / 2) + '%, rgb(' + Math.floor(currentR2) + ', ' + Math.floor(currentG2) + ', ' + Math.floor(currentB2) + ') ' + (fbc_array[10] / $(window).height() / 2) + '%, #fff 100%)');
+	$('body').css('background', 'radial-gradient(rgb(' + Math.floor(currentR1) + ', ' + Math.floor(currentG1) + ', ' + Math.floor(currentB1) + ') ' + (fbc_array[10] / $(window).height() / 2) + '%, rgb(' + Math.floor(currentR2) + ', ' + Math.floor(currentG2) + ', ' + Math.floor(currentB2) + ') ' + (fbc_array[10] / $(window).height() / 2) + '%, rgb(255, 255, 255) 100%)');
 }
 
 $(document).ready(function() {
