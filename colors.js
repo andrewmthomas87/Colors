@@ -35,24 +35,29 @@ function animate() {
 	for (i = 0; i < 100; i++) {
 		averageFrequency += fbc_array[i];
 	}
-	averageFrequency /= 10000;
-	console.log(averageFrequency);
+	averageFrequency /= 20000;
 	if (targetR1 >= currentR1 + averageFrequency) {
+		console.log('Red');
 		currentR1 += averageFrequency;
 	}
 	else if (targetR1 <= currentR1 - averageFrequency) {
+		console.log('Red');
 		currentR1 -= averageFrequency;
 	}
 	else if (targetG1 >= currentG1 + averageFrequency) {
+		console.log('Green');
 		currentG1 += averageFrequency;
 	}
 	else if (targetG1 <= currentG1 - averageFrequency) {
+		console.log('Green');
 		currentG1 -= averageFrequency;
 	}
 	else if (targetB1 >= currentB1 + averageFrequency) {
+		console.log('Blue');
 		currentB1 += averageFrequency;
 	}
 	else if (targetB1 <= currentB1 - averageFrequency) {
+		console.log('Blue');
 		currentB1 -= averageFrequency;
 	}
 	else {
