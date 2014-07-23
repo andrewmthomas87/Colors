@@ -40,7 +40,12 @@ function reset2() {
 function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
-	console.log(fbc_array.length);
+	var averageFrequency = 0;
+	for (i = 0; i < 50; i++) {
+		averageFrequency += fbc_array[i];
+	}
+	averageFrequency /= 50;
+	console.log(averageFrequency);
 	if (targetR1 > currentR1) {
 		currentR1++;
 	}
