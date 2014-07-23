@@ -14,10 +14,6 @@ var freeze = false;
 
 function resize() {
 	$('span').css('left', ($(window).width() - $('span').width()) / 2);
-	$('div').css('width', $(window).width() / 100);
-	for (i = 0; i < 100; i++) {
-		$('body div:nth-child(' + (i + 1) + ')').css('left', $(window).width() / 100 * i);
-	}
 }
 
 function reset1() {
@@ -35,58 +31,58 @@ function reset2() {
 function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
+	var averageFrequency = 0;
 	for (i = 0; i < 100; i++) {
-		$('body div:nth-child(' + (i + 1) + ')').height(fbc_array[i]);
+		averageFrequency += fbc_array[i];
 	}
-	if (targetR1 > currentR1) {
-		currentR1++;
+	averageFrequency /= 1000;
+	averageFrequency = Math.pow(averageFrequency, 2);
+	if (targetR1 >= currentR1 + averageFrequency) {
+		currentR1 += averageFrequency;
 	}
-	else if (targetR1 < currentR1) {
-		currentR1--;
+	else if (targetR1 <= currentR1 - averageFrequency) {
+		currentR1 -= averageFrequency;
 	}
-	else if (targetG1 > currentG1) {
-		currentG1++;
+	else if (targetG1 >= currentG1 + averageFrequency) {
+		currentG1 += averageFrequency;
 	}
-	else if (targetG1 < currentG1) {
-		currentG1--;
+	else if (targetG1 <= currentG1 - averageFrequency) {
+		currentG1 -= averageFrequency;
 	}
-	else if (targetB1 > currentB1) {
-		currentB1++;
+	else if (targetB1 >= currentB1 + averageFrequency) {
+		currentB1 += averageFrequency;
 	}
-	else if (targetB1 < currentB1) {
-		currentB1--;
+	else if (targetB1 <= currentB1 - averageFrequency) {
+		currentB1 -= averageFrequency;
 	}
 	else {
 		reset1();
 	}
-	if (targetR2 > currentR2) {
-		currentR2++;
+	if (targetR2 >= currentR2 + averageFrequency) {
+		currentR2 += averageFrequency;
 	}
-	else if (targetR2 < currentR2) {
-		currentR2--;
+	else if (targetR2 <= currentR2 - averageFrequency) {
+		currentR2 -= averageFrequency;
 	}
-	else if (targetG2 > currentG2) {
-		currentG2++;
+	else if (targetG2 >= currentG2 + averageFrequency) {
+		currentG2 += averageFrequency;
 	}
-	else if (targetG2 < currentG2) {
-		currentG2--;
+	else if (targetG2 <= currentG2 - averageFrequency) {
+		currentG2 -= averageFrequency;
 	}
-	else if (targetB2 > currentB2) {
-		currentB2++;
+	else if (targetB2 >= currentB2 + averageFrequency) {
+		currentB2 += averageFrequency;
 	}
-	else if (targetB2 < currentB2) {
-		currentB2--;
+	else if (targetB2 <= currentB2 - averageFrequency) {
+		currentB2 -= averageFrequency;
 	}
 	else {
-		reset2();
+		reset2());
 	}
 	$('body').css('background', 'linear-gradient(to right, rgb(' + currentR1 + ', ' + currentG1 + ', ' + currentB1 + '), rgb(' + currentR2 + ', ' + currentG2 + ', ' + currentB2 + '))');
 }
 
 $(document).ready(function() {
-	for (i = 0; i < 100; i++) {
-		$('body').append('<div></div>');
-	}
 	document.body.appendChild(audio);
 	context = new webkitAudioContext();
 	analyser = context.createAnalyser();
