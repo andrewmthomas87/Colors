@@ -1,7 +1,7 @@
 
 var audio, context, analyser, source;
 audio = new Audio();
-audio.src = 'Some-Nights.mp3';
+audio.src = 'Habits.mp3';
 audio.controls = false;
 audio.loop = true;
 audio.autoplay = true;
